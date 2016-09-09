@@ -27,7 +27,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menuToolbarMain, menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar_main, menu);
         return true;
     }
 
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         switch (v.getId()){
             case R.id.listaOfertas:
                 menu.setHeaderTitle(getResources().getString(R.string.menu_titulo_acciones));
-                inflater.inflate(R.menu.menuOfertaMain, menu);
+                inflater.inflate(R.menu.menu_oferta_main, menu);
                 break;
             default:
         }
