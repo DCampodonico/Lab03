@@ -18,6 +18,7 @@
 
 package dam.isi.frsf.utn.edu.ar.lab03;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -79,14 +80,16 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
         switch (item.getItemId()){
             case R.id.menuPostularseOferta:
-                //TODO postularse oferta
                 info = (AdapterView.AdapterContextMenuInfo) item;
-                Toast.makeText(this,"Hacer postularse oferta",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Se ha registrado la postulación",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menuCompartirOferta:
-                //TODO compartir oferta
                 info = (AdapterView.AdapterContextMenuInfo) item;
-                Toast.makeText(this,"Hacer compartir oferta",Toast.LENGTH_SHORT).show();
+                Trabajo trabajoSeleccionado = ofertas.get(info.position);
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Postularse para esta oferta");
+                intent.putExtra(Intent.EXTRA_TEXT,"Postularme en la oferta " + trabajoSeleccionado.getDescripcion() + ".");
+                startActivity(intent);
                 break;
         }
         return true;
@@ -108,7 +111,10 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
     @Override
     public boolean onLongClick(View view) {
-        Toast.makeText(getApplicationContext(),"Hola",Toast.LENGTH_SHORT).show();
+        switch(view.getId()){
+            case R.id.listaOfertas:
+                Toast.makeText(getApplicationContext(),"Hola",Toast.LENGTH_SHORT).show();
+        }
         return false;
     }
 }
