@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">Lab03</string>
+    <string name="app_name">WorkFromHome</string>
+    <string name="menu_crear_oferta">CrearUnaOferta</string>
+    <string name="horas">Horas</string>
+    <string name="fecha_fin">Fecha Fin</string>
+    <string name="en_ingles">En Ingles</string>
+    <string name="max_pesos_hora">Max $/Hora</string>
+    <string name="acciones">Acciones</string>
+    <string name="postularse_oferta">Postularse a esta oferta</string>
+    <string name="compartir_oferta">Compartir esta oferta</string>
+    <string name="ingrese_oferta">Ingrese oferta</string>
+    <string name="guardar">GUARDAR</string>
 </resources>
