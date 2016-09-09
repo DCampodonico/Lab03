@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2016 Daniel Campodonico; Emiliano Gioria; Lucas Moretti.
   ~ This file is part of Lab01c2016.
@@ -16,15 +17,19 @@
   ~ along with Lab03.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<resources>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="dam.isi.frsf.utn.edu.ar.lab03.MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+        <item
+            android:id="@+id/menuPostularseOferta"
+            android:title="@string/menu_postularse_oferta" />
 
-</resources>
+        <item
+            android:id="@+id/menuCompartirOferta"
+            android:title="@string/menu_compartir_oferta" />
+
+</menu>

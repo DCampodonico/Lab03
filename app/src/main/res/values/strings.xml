@@ -23,9 +23,13 @@
     <string name="fecha_fin">Fecha Fin</string>
     <string name="en_ingles">En Ingles</string>
     <string name="max_pesos_hora">Max $/Hora</string>
-    <string name="acciones">Acciones</string>
-    <string name="postularse_oferta">Postularse a esta oferta</string>
-    <string name="compartir_oferta">Compartir esta oferta</string>
+    <string name="menu_titulo_acciones">Acciones</string>
+    <string name="menu_postularse_oferta">Postularse a esta oferta</string>
+    <string name="menu_compartir_oferta">Compartir esta oferta</string>
     <string name="ingrese_oferta">Ingrese oferta</string>
     <string name="guardar">GUARDAR</string>
+    <string name="banderaPais">Bandera país</string>
+    <string name="menu_ver_ofertas">Ver mis ofertas</string>
+    <string name="menu_configuracion">Configuración</string>
+    <string name="menu_salir">Salir</string>
 </resources>

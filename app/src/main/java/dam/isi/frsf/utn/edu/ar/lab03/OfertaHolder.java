@@ -31,6 +31,7 @@ public class OfertaHolder {
     TextView itemTvCategoria, itemTvNombreOferta, itemTvHoras, itemTvMaxPesoHora, itemTvFechaFin;
     ImageView itemBandera;
     CheckBox itemCbIngles;
+    View oferta;
 
     public OfertaHolder(View oferta){
         itemTvCategoria = (TextView) oferta.findViewById(R.id.itemTvCategoria);
@@ -40,14 +41,40 @@ public class OfertaHolder {
         itemTvFechaFin = (TextView) oferta.findViewById(R.id.itemTvFechaFin);
         itemBandera = (ImageView) oferta.findViewById(R.id.itemBandera);
         itemCbIngles = (CheckBox) oferta.findViewById(R.id.itemCbIngles);
+        this.oferta = oferta;
     }
 
     public void cargarDatos(Trabajo datos) {
-        itemTvNombreOferta.setText(datos.getCategoria().getDescripcion());
-        itemTvNombreOferta.setText(datos.getCategoria().getDescripcion());
-        itemTvNombreOferta.setText(datos.getCategoria().getDescripcion());
-        itemTvNombreOferta.setText(datos.getCategoria().getDescripcion());
-        itemTvNombreOferta.setText(datos.getCategoria().getDescripcion());
-        itemTvNombreOferta.setText(datos.getCategoria().getDescripcion());
+        itemTvCategoria.setText(datos.getCategoria().getDescripcion());
+        itemTvNombreOferta.setText(datos.getDescripcion());
+        String texto = oferta.getResources().getString(R.string.horas) + ": " + datos.getHorasPresupuestadas();
+        itemTvHoras.setText(texto);
+        texto = oferta.getResources().getString(R.string.max_pesos_hora) + ": " + datos.getPrecioMaximoHora();
+        itemTvMaxPesoHora.setText(texto);
+        texto = oferta.getResources().getString(R.string.fecha_fin) + ": " + datos.getFechaEntrega();
+        itemTvFechaFin.setText(texto);
+
+        //Obtener moneda y setear bandera correspondiente
+        int banderaId = 0;
+        switch(datos.getMonedaPago()){
+            case 1:
+                banderaId = R.drawable.ic_bandera_us;
+                break;
+            case 2:
+                banderaId = R.drawable.ic_bandera_eu;
+                break;
+            case 3:
+                banderaId = R.drawable.ic_bandera_ar;
+                break;
+            case 4:
+                banderaId = R.drawable.ic_bandera_uk;
+                break;
+            case 5:
+                banderaId = R.drawable.ic_bandera_br;
+                break;
+        }
+        itemBandera.setImageResource(banderaId);
+
+        itemCbIngles.setSelected(datos.getRequiereIngles());
     }
 }

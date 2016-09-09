@@ -25,7 +25,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by Emiliano on 08/09/2016.
