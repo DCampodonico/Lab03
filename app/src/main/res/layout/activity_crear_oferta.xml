@@ -1,207 +1,228 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2016 Daniel Campodonico; Emiliano Gioria; Lucas Moretti.
+  ~ This file is part of Lab03.
+  ~
+  ~ Lab03 is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Lab03 is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Lab03.  If not, see <http://www.gnu.org/licenses/>.
+  -->
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="dam.isi.frsf.utn.edu.ar.lab03.CrearOfertaActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:layout_height="match_parent">
 
-
-        <TextView
-            android:id="@+id/tvOferta"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ingrese_oferta"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etOferta"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/tvTrabajo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/trabajo"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:id="@+id/tvOferta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ingrese_oferta"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <Spinner
-            android:id="@+id/sTrabajo"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/etOferta"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/tvCategoria"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/categoria"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:id="@+id/tvTrabajo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/trabajo"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <Spinner
-            android:id="@+id/sCategoria"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/sTrabajo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/tvFechaFin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fecha_fin"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:id="@+id/tvCategoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/categoria"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <DatePicker
-            android:id="@+id/dpFechaFin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/sCategoria"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/tvHoras"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/horas"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:id="@+id/tvFechaFin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fecha_fin"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <EditText
-            android:id="@+id/etHoras"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number" />
+            <DatePicker
+                android:id="@+id/dpFechaFin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/tvMonedaPago"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/moneda_de_pago"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:id="@+id/tvHoras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/horas"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/etHoras"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
 
-            <GridLayout
+            <TextView
+                android:id="@+id/tvMonedaPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/moneda_de_pago"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <RadioButton
-                    android:id="@+id/rbDolar"
+                <GridLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_row="0"
-                    android:text="@string/dolar" />
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/itemBanderaDolar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_row="0"
-                    android:contentDescription="@string/banderaPais" />
+                    <RadioButton
+                        android:id="@+id/rbDolar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_row="0"
+                        android:text="@string/dolar" />
 
-                <RadioButton
-                    android:id="@+id/rbEuro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_row="1"
-                    android:text="@string/euro" />
+                    <ImageView
+                        android:id="@+id/itemBanderaDolar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="0"
+                        android:contentDescription="@string/banderaPais" />
 
-                <ImageView
-                    android:id="@+id/itemBanderaEuro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_row="1"
-                    android:contentDescription="@string/banderaPais" />
+                    <RadioButton
+                        android:id="@+id/rbEuro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_row="1"
+                        android:text="@string/euro" />
 
-                <RadioButton
-                    android:id="@+id/rbPesoArg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_row="2"
-                    android:text="@string/peso_argentino" />
+                    <ImageView
+                        android:id="@+id/itemBanderaEuro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="1"
+                        android:contentDescription="@string/banderaPais" />
 
-                <ImageView
-                    android:id="@+id/itemBanderaPeso"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_row="2"
-                    android:contentDescription="@string/banderaPais" />
+                    <RadioButton
+                        android:id="@+id/rbPesoArg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_row="2"
+                        android:text="@string/peso_argentino" />
 
-                <RadioButton
-                    android:id="@+id/rbLibra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_row="3"
-                    android:text="@string/libra_esterlina" />
+                    <ImageView
+                        android:id="@+id/itemBanderaPeso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="2"
+                        android:contentDescription="@string/banderaPais" />
 
-                <ImageView
-                    android:id="@+id/itemBanderaLibra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_row="3"
-                    android:contentDescription="@string/banderaPais" />
+                    <RadioButton
+                        android:id="@+id/rbLibra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_row="3"
+                        android:text="@string/libra_esterlina" />
 
-                <RadioButton
-                    android:id="@+id/rbReal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_row="4"
-                    android:text="@string/real" />
+                    <ImageView
+                        android:id="@+id/itemBanderaLibra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="3"
+                        android:contentDescription="@string/banderaPais" />
 
-                <ImageView
-                    android:id="@+id/itemBanderaReal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/banderaPais"
-                    android:layout_column="1"
-                    android:layout_row="4" />
+                    <RadioButton
+                        android:id="@+id/rbReal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_row="4"
+                        android:text="@string/real" />
 
-            </GridLayout>
-        </RadioGroup>
+                    <ImageView
+                        android:id="@+id/itemBanderaReal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="4"
+                        android:contentDescription="@string/banderaPais" />
 
-        <TextView
-            android:id="@+id/tvMaxPorHora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/max_pesos_hora"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+                </GridLayout>
+            </RadioGroup>
 
-        <EditText
-            android:id="@+id/etMaxPorHora"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/tvMaxPorHora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/max_pesos_hora"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <CheckBox
-            android:id="@+id/chkEnIngles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/en_ingles" />
+            <EditText
+                android:id="@+id/etMaxPorHora"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
 
-        <Button
-            android:id="@+id/bGuardar"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/guardar" />
-    </LinearLayout>
-</ScrollView>
+            <CheckBox
+                android:id="@+id/chkEnIngles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/en_ingles" />
+
+            <Button
+                android:id="@+id/bGuardar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/guardar" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
