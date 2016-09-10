@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
@@ -25,6 +26,7 @@ public class CrearOfertaActivity extends AppCompatActivity implements Button.OnC
     List<Categoria> categorias;
     ArrayAdapter<Trabajo> adaptadorTrabajo;
     ArrayAdapter<Categoria> adaptadorCategoria;
+    ImageView itemBanderaDolar, itemBanderaEuro, itemBanderaPeso, itemBanderaLibra, itemBanderaReal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,11 @@ public class CrearOfertaActivity extends AppCompatActivity implements Button.OnC
 
         sTrabajo.setAdapter(adaptadorTrabajo);
         sCategoria.setAdapter(adaptadorCategoria);
+        itemBanderaDolar.setImageResource(R.mipmap.ic_bandera_us);
+        itemBanderaEuro.setImageResource(R.mipmap.ic_bandera_eu);
+        itemBanderaPeso.setImageResource(R.mipmap.ic_bandera_ar);
+        itemBanderaLibra.setImageResource(R.mipmap.ic_bandera_uk);
+        itemBanderaReal.setImageResource(R.mipmap.ic_bandera_br);
     }
 
     private void setParametros() {
@@ -53,6 +60,11 @@ public class CrearOfertaActivity extends AppCompatActivity implements Button.OnC
         categorias = Arrays.asList(Categoria.CATEGORIAS_MOCK);
         adaptadorTrabajo = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, trabajos);
         adaptadorCategoria = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, categorias);
+        itemBanderaDolar = (ImageView) findViewById(R.id.itemBanderaDolar);
+        itemBanderaEuro = (ImageView) findViewById(R.id.itemBanderaEuro);
+        itemBanderaPeso = (ImageView) findViewById(R.id.itemBanderaPeso);
+        itemBanderaLibra = (ImageView) findViewById(R.id.itemBanderaLibra);
+        itemBanderaReal = (ImageView) findViewById(R.id.itemBanderaReal);
     }
 
     @Override

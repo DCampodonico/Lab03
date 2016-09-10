@@ -55,19 +55,19 @@ public class OfertaHolder {
         int banderaId = 0;
         switch(datos.getMonedaPago()){
             case 1:
-                banderaId = R.drawable.ic_bandera_us;
+                banderaId = R.mipmap.ic_bandera_us;
                 break;
             case 2:
-                banderaId = R.drawable.ic_bandera_eu;
+                banderaId = R.mipmap.ic_bandera_eu;
                 break;
             case 3:
-                banderaId = R.drawable.ic_bandera_ar;
+                banderaId = R.mipmap.ic_bandera_ar;
                 break;
             case 4:
-                banderaId = R.drawable.ic_bandera_uk;
+                banderaId = R.mipmap.ic_bandera_uk;
                 break;
             case 5:
-                banderaId = R.drawable.ic_bandera_br;
+                banderaId = R.mipmap.ic_bandera_br;
                 break;
         }
         itemBandera.setImageResource(banderaId);

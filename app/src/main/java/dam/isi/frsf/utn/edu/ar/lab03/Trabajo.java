@@ -125,6 +125,11 @@ public class Trabajo implements Serializable{
         this.requiereIngles = requiereIngles;
     }
 
+    @Override
+    public String toString() {
+        return descripcion;
+    }
+
     public static final Trabajo[] TRABAJOS_MOCK= new Trabajo[]{
             new Trabajo(1,"Proyecto ABc"),
             new Trabajo(2,"Sistema de Gestion"),

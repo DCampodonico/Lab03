@@ -18,7 +18,7 @@
 
 <resources>
     <string name="app_name">WorkFromHome</string>
-    <string name="menu_crear_oferta">CrearUnaOferta</string>
+    <string name="menu_crear_oferta">Crear una oferta</string>
     <string name="horas">Horas</string>
     <string name="fecha_fin">Fecha Fin</string>
     <string name="en_ingles">En Ingles</string>
