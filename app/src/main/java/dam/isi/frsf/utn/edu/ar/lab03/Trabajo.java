@@ -33,7 +33,7 @@ public class Trabajo implements Serializable{
     private Categoria categoria;
     private Double precioMaximoHora;
     private Date fechaEntrega;
-    private Integer monedaPago; //1 US$ 2Euro 3 AR$- 4 Libra 5 R$
+    private Integer monedaPago; //1 US$ 2 Euro 3 AR$ 4 Libra 5 R$
     private Boolean requiereIngles;
 
     public Trabajo(){

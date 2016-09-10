@@ -35,9 +35,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnLongClickListener{
 
-    ListView listaOfertas;
-    OfertaAdapter adaptadorListaOfertas;
-    List<Trabajo> ofertas;
+    private ListView listaOfertas;
+    private OfertaAdapter adaptadorListaOfertas;
+    private List<Trabajo> ofertas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     }
 
     private void cargarParametros() {
-        ofertas = new ArrayList<Trabajo>();
+        ofertas = new ArrayList<>();
         listaOfertas = (ListView) findViewById(R.id.listaOfertas);
         adaptadorListaOfertas = new OfertaAdapter(this,ofertas);
     }
@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.menuCrearOferta:
-                Toast.makeText(this,"Llamar pantalla crear ofertas",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this,CrearOfertaActivity.class);
+                startActivity(intent);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         switch (item.getItemId()){
             case R.id.menuPostularseOferta:
                 info = (AdapterView.AdapterContextMenuInfo) item;
-                Toast.makeText(this,"Se ha registrado la postulación",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Se ha registrado la postulación " + info.position + ".",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menuCompartirOferta:
                 info = (AdapterView.AdapterContextMenuInfo) item;

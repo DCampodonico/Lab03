@@ -23,15 +23,12 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by Emiliano on 08/09/2016.
- */
 public class OfertaHolder {
 
-    TextView itemTvCategoria, itemTvNombreOferta, itemTvHoras, itemTvMaxPesoHora, itemTvFechaFin;
-    ImageView itemBandera;
-    CheckBox itemCbIngles;
-    View oferta;
+    private TextView itemTvCategoria, itemTvNombreOferta, itemTvHoras, itemTvMaxPesoHora, itemTvFechaFin;
+    private ImageView itemBandera;
+    private CheckBox itemCbIngles;
+    private View oferta;
 
     public OfertaHolder(View oferta){
         itemTvCategoria = (TextView) oferta.findViewById(R.id.itemTvCategoria);

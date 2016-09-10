@@ -26,13 +26,10 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-/**
- * Created by Emiliano on 08/09/2016.
- */
 public class OfertaAdapter extends BaseAdapter {
 
-    LayoutInflater inflater;
-    List<Trabajo> items;
+    private LayoutInflater inflater;
+    private List<Trabajo> items;
 
     public OfertaAdapter(Context context, List<Trabajo> items){
         super();
