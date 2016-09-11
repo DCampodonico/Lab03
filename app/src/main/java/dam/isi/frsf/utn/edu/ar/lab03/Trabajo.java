@@ -22,9 +22,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-/**
- * Created by mdominguez on 07/09/16.
- */
 public class Trabajo implements Serializable{
 
     private Integer id;
@@ -41,7 +38,7 @@ public class Trabajo implements Serializable{
         this.monedaPago=1+r.nextInt(4);
         this.requiereIngles=r.nextInt()%2==0;
         Integer dias = (7+r.nextInt(35));
-        long ts =(long) (System.currentTimeMillis()+dias*1000*60*60*24);
+        long ts = System.currentTimeMillis()+dias*1000*60*60*24;
         this.fechaEntrega = new Date(ts);
         this.precioMaximoHora=r.nextDouble()*(10+r.nextInt(100));
         this.horasPresupuestadas = dias/ 4+r.nextInt(6);

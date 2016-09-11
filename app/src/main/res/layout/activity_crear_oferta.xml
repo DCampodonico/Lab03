@@ -16,7 +16,7 @@
   ~ along with Lab03.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,28 +26,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="dam.isi.frsf.utn.edu.ar.lab03.CrearOfertaActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <TextView
                 android:id="@+id/tvOferta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ingrese_oferta"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:labelFor="@+id/etOferta"/>
 
             <EditText
-                android:id="@+id/etOferta"
+                android:id="@id/etOferta"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:labelFor="@id/tvOferta"
+                android:inputType="textCapSentences"/>
 
             <TextView
                 android:id="@+id/tvCategoria"
@@ -80,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/horas"
+                android:labelFor="@+id/etHoras"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <EditText
@@ -87,6 +86,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:labelFor="@id/tvHoras"
                 android:inputType="number" />
 
             <TextView
@@ -142,6 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/max_pesos_hora"
+                android:labelFor="@+id/etMaxPorHora"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <EditText
@@ -149,6 +150,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:labelFor="@id/tvMaxPorHora"
                 android:inputType="numberDecimal" />
 
             <CheckBox
@@ -164,4 +166,3 @@
                 android:text="@string/guardar" />
         </LinearLayout>
     </ScrollView>
-</RelativeLayout>

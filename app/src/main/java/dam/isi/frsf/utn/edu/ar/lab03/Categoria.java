@@ -30,7 +30,7 @@ public class Categoria implements Serializable {
     private List<Trabajo> trabajos;
 
     public Categoria(){
-        this.trabajos=new ArrayList<Trabajo>();
+        this.trabajos=new ArrayList<>();
     }
 
     public Categoria(Integer id,String desc){

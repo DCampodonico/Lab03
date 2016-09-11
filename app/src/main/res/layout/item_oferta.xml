@@ -17,7 +17,7 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:text="Small Text"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginStart="5dp" />
 
         <ImageView
             android:id="@+id/itemBandera"
@@ -81,6 +81,6 @@
             android:layout_height="wrap_content"
             android:enabled="false"
             android:text="@string/en_ingles"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginStart="5dp" />
     </LinearLayout>
 </LinearLayout>
