@@ -22,13 +22,20 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class OfertaHolder {
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+public class OfertaHolder implements View.OnLongClickListener{
+
+    private static final DateFormat DATE_FORMATTER = SimpleDateFormat.getDateInstance();
 
     private TextView itemTvCategoria, itemTvNombreOferta, itemTvHoras, itemTvMaxPesoHora, itemTvFechaFin;
     private ImageView itemBandera;
     private CheckBox itemCbIngles;
     private View oferta;
+    private Trabajo datos;
 
     public OfertaHolder(View oferta){
         itemTvCategoria = (TextView) oferta.findViewById(R.id.itemTvCategoria);
@@ -39,16 +46,20 @@ public class OfertaHolder {
         itemBandera = (ImageView) oferta.findViewById(R.id.itemBandera);
         itemCbIngles = (CheckBox) oferta.findViewById(R.id.itemCbIngles);
         this.oferta = oferta;
+        //Linea mágica
+        oferta.setLongClickable(true);
+        oferta.setOnLongClickListener(this);
     }
 
     public void cargarDatos(Trabajo datos) {
+        this.datos = datos;
         itemTvCategoria.setText(datos.getCategoria().getDescripcion());
         itemTvNombreOferta.setText(datos.getDescripcion());
         String texto = oferta.getResources().getString(R.string.horas) + ": " + datos.getHorasPresupuestadas();
         itemTvHoras.setText(texto);
         texto = oferta.getResources().getString(R.string.max_pesos_hora) + ": " + datos.getPrecioMaximoHora();
         itemTvMaxPesoHora.setText(texto);
-        texto = oferta.getResources().getString(R.string.fecha_fin) + ": " + datos.getFechaEntrega();
+        texto = oferta.getResources().getString(R.string.fecha_fin) + ": " + DATE_FORMATTER.format(datos.getFechaEntrega());
         itemTvFechaFin.setText(texto);
 
         //Obtener moneda y setear bandera correspondiente
@@ -73,5 +84,11 @@ public class OfertaHolder {
         itemBandera.setImageResource(banderaId);
 
         itemCbIngles.setSelected(datos.getRequiereIngles());
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        Toast.makeText(oferta.getContext(),datos.getDescripcion(),Toast.LENGTH_SHORT).show();
+        return false;
     }
 }

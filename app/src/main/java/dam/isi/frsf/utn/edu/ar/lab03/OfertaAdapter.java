@@ -64,6 +64,6 @@ public class OfertaAdapter extends BaseAdapter {
             row.setTag(holder);
         }
         holder.cargarDatos(getItem(i));
-        return null;
+        return row;
     }
 }

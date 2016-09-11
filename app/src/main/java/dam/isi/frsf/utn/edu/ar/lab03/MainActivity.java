@@ -33,7 +33,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnLongClickListener{
+public class MainActivity extends AppCompatActivity {
 
     private ListView listaOfertas;
     private OfertaAdapter adaptadorListaOfertas;
@@ -66,31 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         switch (item.getItemId()){
             case R.id.menuCrearOferta:
                 Intent intent = new Intent(this,CrearOfertaActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,0);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info;
-
-        switch (item.getItemId()){
-            case R.id.menuPostularseOferta:
-                info = (AdapterView.AdapterContextMenuInfo) item;
-                Toast.makeText(this,"Se ha registrado la postulación " + info.position + ".",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.menuCompartirOferta:
-                info = (AdapterView.AdapterContextMenuInfo) item;
-                Trabajo trabajoSeleccionado = ofertas.get(info.position);
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Postularse para esta oferta");
-                intent.putExtra(Intent.EXTRA_TEXT,"Postularme en la oferta " + trabajoSeleccionado.getDescripcion() + ".");
-                startActivity(intent);
-                break;
         }
         return true;
     }
@@ -110,11 +89,32 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     }
 
     @Override
-    public boolean onLongClick(View view) {
-        switch(view.getId()){
-            case R.id.listaOfertas:
-                Toast.makeText(getApplicationContext(),"Hola",Toast.LENGTH_SHORT).show();
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info;
+
+        switch (item.getItemId()){
+            case R.id.menuPostularseOferta:
+                info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                Toast.makeText(this,"Se ha registrado la postulación " + info.position + ".",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuCompartirOferta:
+                info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                Trabajo trabajoSeleccionado = ofertas.get(info.position);
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Postularse para esta oferta");
+                intent.putExtra(Intent.EXTRA_TEXT,"Postularme en la oferta " + trabajoSeleccionado.getDescripcion() + ".");
+                startActivity(intent);
+                break;
         }
-        return false;
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(data != null){
+            Trabajo trabajo = (Trabajo) data.getSerializableExtra("resultado");
+            ofertas.add(trabajo);
+            adaptadorListaOfertas.notifyDataSetChanged();
+        }
     }
 }

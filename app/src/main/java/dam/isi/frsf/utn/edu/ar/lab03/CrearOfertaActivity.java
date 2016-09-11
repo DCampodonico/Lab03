@@ -1,5 +1,6 @@
 package dam.isi.frsf.utn.edu.ar.lab03;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,23 +11,27 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
-public class CrearOfertaActivity extends AppCompatActivity implements Button.OnClickListener{
+public class CrearOfertaActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText etOferta, etHoras, etMaxPorHora;
     RadioButton rbDolar, rbEuro, rbLibra, rbPesoArg, rbReal;
     DatePicker dpFechaFin;
     CheckBox chkEnIngles;
-    Spinner sTrabajo, sCategoria;
-    List<Trabajo> trabajos;
+    Spinner sCategoria;
     List<Categoria> categorias;
-    ArrayAdapter<Trabajo> adaptadorTrabajo;
     ArrayAdapter<Categoria> adaptadorCategoria;
-    ImageView itemBanderaDolar, itemBanderaEuro, itemBanderaPeso, itemBanderaLibra, itemBanderaReal;
+    RadioGroup radioGroup;
+    Button bGuardar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +39,9 @@ public class CrearOfertaActivity extends AppCompatActivity implements Button.OnC
         setContentView(R.layout.activity_crear_oferta);
         setParametros();
 
-        sTrabajo.setAdapter(adaptadorTrabajo);
         sCategoria.setAdapter(adaptadorCategoria);
-        itemBanderaDolar.setImageResource(R.mipmap.ic_bandera_us);
-        itemBanderaEuro.setImageResource(R.mipmap.ic_bandera_eu);
-        itemBanderaPeso.setImageResource(R.mipmap.ic_bandera_ar);
-        itemBanderaLibra.setImageResource(R.mipmap.ic_bandera_uk);
-        itemBanderaReal.setImageResource(R.mipmap.ic_bandera_br);
+
+        bGuardar.setOnClickListener(this);
     }
 
     private void setParametros() {
@@ -54,17 +55,13 @@ public class CrearOfertaActivity extends AppCompatActivity implements Button.OnC
         rbReal = (RadioButton) findViewById(R.id.rbReal);
         dpFechaFin = (DatePicker) findViewById(R.id.dpFechaFin);
         chkEnIngles = (CheckBox) findViewById(R.id.chkEnIngles);
-        sTrabajo = (Spinner) findViewById(R.id.sTrabajo);
+
         sCategoria = (Spinner) findViewById(R.id.sCategoria);
-        trabajos = Arrays.asList(Trabajo.TRABAJOS_MOCK);
         categorias = Arrays.asList(Categoria.CATEGORIAS_MOCK);
-        adaptadorTrabajo = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, trabajos);
         adaptadorCategoria = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, categorias);
-        itemBanderaDolar = (ImageView) findViewById(R.id.itemBanderaDolar);
-        itemBanderaEuro = (ImageView) findViewById(R.id.itemBanderaEuro);
-        itemBanderaPeso = (ImageView) findViewById(R.id.itemBanderaPeso);
-        itemBanderaLibra = (ImageView) findViewById(R.id.itemBanderaLibra);
-        itemBanderaReal = (ImageView) findViewById(R.id.itemBanderaReal);
+
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        bGuardar = (Button) findViewById(R.id.bGuardar);
     }
 
     @Override
@@ -78,6 +75,77 @@ public class CrearOfertaActivity extends AppCompatActivity implements Button.OnC
     }
 
     private void guardarOferta() {
-        //TODO guardar oferta
+        //TODO tomar datos de la vista y validarlos, luego si los datos son validos crear oferta, sino mostrar toast de error
+        String error = validarDatosOferta();
+        if(error.isEmpty()){
+            Trabajo trabajo = new Trabajo(0,Trabajo.TRABAJOS_MOCK[0].getDescripcion());
+            trabajo.setCategoria(categorias.get(0));
+            trabajo.setFechaEntrega(getDateFromDatePicket(dpFechaFin));
+            trabajo.setHorasPresupuestadas(8);
+            trabajo.setMonedaPago(0);
+            trabajo.setPrecioMaximoHora(10.0);
+            trabajo.setRequiereIngles(true);
+
+            Intent i = getIntent();
+            // seteamos el resultado a enviar a la actividad principal.
+            i.putExtra("resultado",trabajo);
+            // invocamos al método de activity setResult
+            setResult(RESULT_OK, i);
+            // Finalizamos la Activity para volver a la anterior
+            finish();
+        }
+        else{
+            Toast.makeText(this,"Error",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    //Convertir DatePicker a date
+    private Date getDateFromDatePicket(DatePicker datePicker){
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+
+        return calendar.getTime();
+    }
+
+    private String validarDatosOferta() {
+        return "";
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("descripcion_oferta",etOferta.getText().toString());
+        outState.putString("horas",etHoras.getText().toString());
+        outState.putString("max_por_hora",etMaxPorHora.getText().toString());
+        outState.putInt("categoria_posicion",sCategoria.getSelectedItemPosition());
+        outState.putInt("fecha_dia",dpFechaFin.getDayOfMonth());
+        outState.putInt("fecha_mes",dpFechaFin.getMonth());
+        outState.putInt("fecha_anio",dpFechaFin.getYear());
+        outState.putBoolean("us_seleccionado",rbDolar.isSelected());
+        outState.putBoolean("eu_seleccionado",rbEuro.isSelected());
+        outState.putBoolean("ar_seleccionado",rbPesoArg.isSelected());
+        outState.putBoolean("uk_seleccionado",rbLibra.isSelected());
+        outState.putBoolean("br_seleccionado",rbReal.isSelected());
+        outState.putBoolean("en_ingles",chkEnIngles.isSelected());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        etOferta.setText(savedInstanceState.getString("descripcion_oferta"));
+        etHoras.setText(savedInstanceState.getString("horas"));
+        etMaxPorHora.setText(savedInstanceState.getString("max_por_hora"));
+        sCategoria.setSelection(savedInstanceState.getInt("categoria_posicion"));
+        dpFechaFin.updateDate(savedInstanceState.getInt("fecha_anio"),savedInstanceState.getInt("fecha_mes"),savedInstanceState.getInt("fecha_dia"));
+        rbDolar.setSelected(savedInstanceState.getBoolean("us_seleccionado"));
+        rbEuro.setSelected(savedInstanceState.getBoolean("eu_seleccionado"));
+        rbPesoArg.setSelected(savedInstanceState.getBoolean("ar_seleccionado"));
+        rbLibra.setSelected(savedInstanceState.getBoolean("uk_seleccionado"));
+        rbReal.setSelected(savedInstanceState.getBoolean("br_seleccionado"));
+        chkEnIngles.setSelected(savedInstanceState.getBoolean("en_ingles"));
     }
 }
