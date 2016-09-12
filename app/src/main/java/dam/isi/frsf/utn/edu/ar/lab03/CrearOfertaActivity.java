@@ -44,7 +44,7 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
 
         radioGroup.setOnCheckedChangeListener(this);
         rbDolar.setChecked(true);
-        opcionSeleccionada = 0;
+        opcionSeleccionada = 1;
     }
 
     private void setParametros() {
@@ -73,19 +73,19 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
             case R.id.radioGroup:
                 switch(checkedId){
                     case R.id.rbDolar:
-                        opcionSeleccionada = 0;
-                        break;
-                    case R.id.rbEuro:
                         opcionSeleccionada = 1;
                         break;
-                    case R.id.rbPesoArg:
+                    case R.id.rbEuro:
                         opcionSeleccionada = 2;
                         break;
-                    case R.id.rbLibra:
+                    case R.id.rbPesoArg:
                         opcionSeleccionada = 3;
                         break;
-                    case R.id.rbReal:
+                    case R.id.rbLibra:
                         opcionSeleccionada = 4;
+                        break;
+                    case R.id.rbReal:
+                        opcionSeleccionada = 5;
                         break;
                     default:
                 }
