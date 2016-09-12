@@ -24,6 +24,14 @@ import java.util.Random;
 
 public class Trabajo implements Serializable{
 
+    private static int MAX_ID = 0;
+
+    public static int getAndIncreaseId(){
+        int ret = MAX_ID;
+        MAX_ID++;
+        return ret;
+    }
+
     private Integer id;
     private String descripcion;
     private Integer horasPresupuestadas;

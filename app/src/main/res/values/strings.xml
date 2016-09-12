@@ -39,4 +39,7 @@
     <string name="menu_ver_ofertas">Ver mis ofertas</string>
     <string name="menu_configuracion">Configuración</string>
     <string name="menu_salir">Salir</string>
+    <string name="postulacion_registrada">Se ha registrado la postulación</string>
+    <string name="postularse_oferta">Postularse para esta oferta</string>
+    <string name="postularme_oferta">Postularme en la oferta</string>
 </resources>

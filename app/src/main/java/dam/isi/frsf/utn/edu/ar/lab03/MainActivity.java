@@ -95,15 +95,17 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menuPostularseOferta:
                 info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                Toast.makeText(this,"Se ha registrado la postulación " + info.position + ".",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,getResources().getString(R.string.postulacion_registrada) + ": \"" + ofertas.get(info.position) + "\".",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menuCompartirOferta:
                 info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
                 Trabajo trabajoSeleccionado = ofertas.get(info.position);
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Postularse para esta oferta");
-                intent.putExtra(Intent.EXTRA_TEXT,"Postularme en la oferta " + trabajoSeleccionado.getDescripcion() + ".");
-                startActivity(intent);
+
+                Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.postularse_oferta));
+                intent.putExtra(Intent.EXTRA_TEXT,getResources().getString(R.string.postularme_oferta) + ": " + trabajoSeleccionado.getDescripcion() + ".");
+                startActivity(Intent.createChooser(intent,getResources().getString(R.string.postularse_oferta)));
                 break;
         }
         return true;

@@ -19,7 +19,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class CrearOfertaActivity extends AppCompatActivity implements View.OnClickListener {
+public class CrearOfertaActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     EditText etOferta, etHoras, etMaxPorHora;
     RadioButton rbDolar, rbEuro, rbLibra, rbPesoArg, rbReal;
@@ -29,6 +29,7 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
     List<Categoria> categorias;
     ArrayAdapter<Categoria> adaptadorCategoria;
     RadioGroup radioGroup;
+    int opcionSeleccionada;
     Button bGuardar;
 
     @Override
@@ -40,6 +41,10 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
         sCategoria.setAdapter(adaptadorCategoria);
 
         bGuardar.setOnClickListener(this);
+
+        radioGroup.setOnCheckedChangeListener(this);
+        rbDolar.setChecked(true);
+        opcionSeleccionada = 0;
     }
 
     private void setParametros() {
@@ -63,6 +68,33 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
     }
 
     @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (group.getId()){
+            case R.id.radioGroup:
+                switch(checkedId){
+                    case R.id.rbDolar:
+                        opcionSeleccionada = 0;
+                        break;
+                    case R.id.rbEuro:
+                        opcionSeleccionada = 1;
+                        break;
+                    case R.id.rbPesoArg:
+                        opcionSeleccionada = 2;
+                        break;
+                    case R.id.rbLibra:
+                        opcionSeleccionada = 3;
+                        break;
+                    case R.id.rbReal:
+                        opcionSeleccionada = 4;
+                        break;
+                    default:
+                }
+                break;
+            default:
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.bGuardar:
@@ -73,16 +105,22 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void guardarOferta() {
-        //TODO tomar datos de la vista y validarlos, luego si los datos son validos crear oferta, sino mostrar toast de error
         String error = validarDatosOferta();
+        //TODO borrar
+        etOferta.setText(Trabajo.TRABAJOS_MOCK[0].getDescripcion());
+        etHoras.setText("8");
+        etMaxPorHora.setText("10.0");
+        //borrar
         if(error.isEmpty()){
-            Trabajo trabajo = new Trabajo(0,Trabajo.TRABAJOS_MOCK[0].getDescripcion());
-            trabajo.setCategoria(categorias.get(0));
+            Trabajo trabajo = new Trabajo();
+            trabajo.setId(Trabajo.getAndIncreaseId());
+            trabajo.setDescripcion(etOferta.getText().toString().trim());
+            trabajo.setCategoria((Categoria) sCategoria.getSelectedItem());
             trabajo.setFechaEntrega(getDateFromDatePicket(dpFechaFin));
-            trabajo.setHorasPresupuestadas(8);
-            trabajo.setMonedaPago(0);
-            trabajo.setPrecioMaximoHora(10.0);
-            trabajo.setRequiereIngles(true);
+            trabajo.setHorasPresupuestadas(Integer.parseInt(etHoras.getText().toString()));
+            trabajo.setMonedaPago(opcionSeleccionada);
+            trabajo.setPrecioMaximoHora(Double.parseDouble(etMaxPorHora.getText().toString().trim()));
+            trabajo.setRequiereIngles(chkEnIngles.isChecked());
 
             Intent i = getIntent();
             // seteamos el resultado a enviar a la actividad principal.
@@ -93,8 +131,14 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
             finish();
         }
         else{
-            Toast.makeText(this,"Error",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,error,Toast.LENGTH_LONG).show();
         }
+    }
+
+    private String validarDatosOferta() {
+        //TODO tomar datos de la vista y validarlos, luego retornar errores
+        //poner strings errores al xml strings
+        return "";
     }
 
     //Convertir DatePicker a date
@@ -107,10 +151,6 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
         calendar.set(year, month, day);
 
         return calendar.getTime();
-    }
-
-    private String validarDatosOferta() {
-        return "";
     }
 
     @Override
