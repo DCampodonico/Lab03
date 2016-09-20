@@ -42,4 +42,7 @@
     <string name="postulacion_registrada">Se ha registrado la postulación</string>
     <string name="postularse_oferta">Postularse para esta oferta</string>
     <string name="postularme_oferta">Postularme en la oferta</string>
+    <string name="error_nombre_oferta">El nombre de la oferta es inválido</string>
+    <string name="error_horas">La cantidad de horas ingresadas es inválida</string>
+    <string name="error_max_por_hora">El max $/hora es inválido</string>
 </resources>

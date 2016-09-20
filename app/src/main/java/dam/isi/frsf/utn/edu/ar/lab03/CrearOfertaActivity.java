@@ -1,8 +1,8 @@
 package dam.isi.frsf.utn.edu.ar.lab03;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -106,11 +106,7 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
 
     private void guardarOferta() {
         String error = validarDatosOferta();
-        //TODO borrar
-        etOferta.setText(Trabajo.TRABAJOS_MOCK[0].getDescripcion());
-        etHoras.setText("8");
-        etMaxPorHora.setText("10.0");
-        //borrar
+
         if(error.isEmpty()){
             Trabajo trabajo = new Trabajo();
             trabajo.setId(Trabajo.getAndIncreaseId());
@@ -136,9 +132,47 @@ public class CrearOfertaActivity extends AppCompatActivity implements View.OnCli
     }
 
     private String validarDatosOferta() {
-        //TODO tomar datos de la vista y validarlos, luego retornar errores
-        //poner strings errores al xml strings
-        return "";
+        String error="";
+        if(!validarNombreOferta(etOferta.getText().toString().trim())){
+            error += getResources().getString(R.string.error_nombre_oferta);
+        }
+        if(!validarHoras(etHoras.getText().toString().trim())){
+            if(!error.isEmpty()){
+                error += "\n";
+            }
+            error += getResources().getString(R.string.error_horas);
+        }
+        if(!validarMaxPorHora(etMaxPorHora.getText().toString().trim())){
+            if(!error.isEmpty()){
+                error += "\n";
+            }
+            error += getResources().getString(R.string.error_max_por_hora);
+        }
+        return error;
+    }
+
+    private boolean validarNombreOferta(String nombreOferta){
+        return !nombreOferta.isEmpty();
+    }
+
+    private boolean validarHoras(String horas){
+        try {
+            //noinspection ResultOfMethodCallIgnored
+            Integer.parseInt(horas);
+        } catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    private  boolean validarMaxPorHora(String maxPorHora){
+        try {
+            //noinspection ResultOfMethodCallIgnored
+            Double.parseDouble(maxPorHora);
+        } catch(Exception e){
+            return false;
+        }
+        return true;
     }
 
     //Convertir DatePicker a date
