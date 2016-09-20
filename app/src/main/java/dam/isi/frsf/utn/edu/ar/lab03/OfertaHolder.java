@@ -83,7 +83,7 @@ public class OfertaHolder implements View.OnLongClickListener{
         }
         itemBandera.setImageResource(banderaId);
 
-        itemCbIngles.setSelected(datos.getRequiereIngles());
+        itemCbIngles.setChecked(datos.getRequiereIngles());
     }
 
     @Override
