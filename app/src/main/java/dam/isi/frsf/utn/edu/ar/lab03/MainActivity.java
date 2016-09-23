@@ -31,6 +31,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         cargarParametros();
 
+        ofertas.addAll(Arrays.asList(Trabajo.TRABAJOS_MOCK));
         listaOfertas.setAdapter(adaptadorListaOfertas);
         registerForContextMenu(listaOfertas);
     }
