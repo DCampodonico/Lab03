@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class OfertaHolder implements View.OnLongClickListener{
 
@@ -57,7 +58,7 @@ public class OfertaHolder implements View.OnLongClickListener{
         itemTvNombreOferta.setText(datos.getDescripcion());
         String texto = oferta.getResources().getString(R.string.horas) + ": " + datos.getHorasPresupuestadas();
         itemTvHoras.setText(texto);
-        texto = oferta.getResources().getString(R.string.max_pesos_hora) + ": " + datos.getPrecioMaximoHora();
+        texto = oferta.getResources().getString(R.string.max_pesos_hora) + ": " + String.format(Locale.getDefault(),"%.2f",datos.getPrecioMaximoHora());
         itemTvMaxPesoHora.setText(texto);
         texto = oferta.getResources().getString(R.string.fecha_fin) + ": " + DATE_FORMATTER.format(datos.getFechaEntrega());
         itemTvFechaFin.setText(texto);

@@ -40,8 +40,9 @@
     <string name="menu_configuracion">Configuración</string>
     <string name="menu_salir">Salir</string>
     <string name="postulacion_registrada">Se ha registrado la postulación</string>
-    <string name="postularse_oferta">Postularse para esta oferta</string>
-    <string name="postularme_oferta">Postularme en la oferta</string>
+    <string name="compartir_oferta_titulo">WorkFromHome - Oferta de trabajo: %01$s para %02$s</string>
+    <string name="compartir_oferta_texto">WorkFromHome \nSe busca %01$s para %02$s.\nSe deberá trabajar por %03$d horas por un salario máximo de %04$.2f %05$s.\nHay tiempo para presentarse hasta el %06$s.</string>
+    <string name="conocimiento_ingles">Es necesario tener conocimientos de inglés.</string>
     <string name="error_nombre_oferta">El nombre de la oferta es inválido</string>
     <string name="error_horas">La cantidad de horas ingresadas es inválida</string>
     <string name="error_max_por_hora">El max $/hora es inválido</string>
